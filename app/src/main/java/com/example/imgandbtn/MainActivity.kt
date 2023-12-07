@@ -57,7 +57,6 @@ fun MainScreen(){
 
         ScrollableImages()
         Spacer(modifier = Modifier.padding(35.dp))
-
         BottomButtons()
 
     }
