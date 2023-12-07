@@ -90,8 +90,7 @@ fun ScrollableImages(){
 fun BottomButtons(){
     Column ( modifier = Modifier
         .fillMaxWidth()
-        .padding(16.dp),
-        verticalArrangement = Arrangement.Bottom){
+        .padding(16.dp)){
 
         Row(modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly) {
