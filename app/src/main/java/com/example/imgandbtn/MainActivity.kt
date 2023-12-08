@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,30 +12,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.Coil
 import com.example.imgandbtn.ui.theme.ImgAndBtnTheme
 
 data class Article(
@@ -114,10 +105,12 @@ fun MainScreen(article: Article) {
                 painter = painterResource(id = R.drawable.tiger),
                 contentDescription = "Profile Pic",
                 modifier = Modifier
+                    .size(50.dp)
                     .padding(4.dp)
-                    .clip(MaterialTheme.shapes.extraSmall)
-                    .border(2.dp, color = Color.DarkGray, shape = CircleShape)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary)
             )
+            Spacer(modifier = Modifier.padding(end = 8.dp))
             Column {
                 Text(text = article.author, modifier = Modifier.padding(bottom = 4.dp))
                 Text(text = article.followers, modifier = Modifier.padding(start = 4.dp))
@@ -127,9 +120,27 @@ fun MainScreen(article: Article) {
                 Text(text = "Follow")
             }
         }
-        Spacer(modifier = Modifier.padding(20.dp))
-        Text(text = article.description, modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.padding(bottom = 10.dp))
+        Text(text = article.description, modifier = Modifier.height(26.dp))
     }
+//    @Composable
+//    fun Image1(){
+//        CoilImage(
+//            painter = rememberCoilPainter(request = article.imageUrl),
+//            contentDescription = null,
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .height(200.dp)
+//                .clip(shape = RoundedCornerShape(8.dp)),
+//            contentScale = ContentScale.Crop,
+//            loading = {
+//                Box(
+//                    modifier = Modifier.fillMaxSize()
+//                        .background(Color.Gray)
+//                )
+//            }
+//        )
+//    }
 }
 @Composable
 fun Images() {
@@ -142,6 +153,7 @@ fun Images() {
             .clip(MaterialTheme.shapes.medium)
     )
 }
+
 
 @Preview(showBackground = true)
 @Composable
